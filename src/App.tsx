@@ -3,11 +3,11 @@ import './App.css';
 
 import ColorPicker, { Color } from './ColorPicker';
 
-interface AppState {
+interface IAppState {
   selectedColor: Color;
 }
 
-class App extends React.Component<{}, AppState> {
+class App extends React.Component<{}, IAppState> {
 
   private favColors: Color[] = [
     [39, 184, 241],
@@ -50,7 +50,7 @@ class App extends React.Component<{}, AppState> {
       selectedColor: color
     });
   }
-  
+
 }
 
 export default App;

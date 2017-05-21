@@ -9,18 +9,18 @@ type RGBColor = {
   [key in ColorComponent]?: number;
 };
 
-interface ColorPickerProps {
+interface IColorPickerProps {
   color: Color;
   onChange: (color: Color) => void;
 }
 
-interface ColorPickerState {
+interface IColorPickerState {
   colors: RGBColor;
 }
 
-class ColorPicker extends React.Component<ColorPickerProps, ColorPickerState> {
+class ColorPicker extends React.Component<IColorPickerProps, IColorPickerState> {
 
-  state: ColorPickerState = {
+  state: IColorPickerState = {
     colors: {
       R: 0,
       G: 0,
@@ -30,14 +30,14 @@ class ColorPicker extends React.Component<ColorPickerProps, ColorPickerState> {
 
   private colorComponents: ColorComponent[] = ['R', 'G', 'B'];
 
-  constructor(props: ColorPickerProps) {
+  constructor(props: IColorPickerProps) {
     super(props);
     if (props.color) {
       this.state.colors = this.arrayToRgb(props.color);
     }
   }
 
-  componentWillReceiveProps(newProps: ColorPickerProps) {
+  componentWillReceiveProps(newProps: IColorPickerProps) {
     if (newProps.color) {
       this.setState({
         colors: this.arrayToRgb(newProps.color)
