@@ -1,43 +1,43 @@
 import * as React from 'react';
 import './ColorPicker.css';
 
-export type Color = [number, number, number]
+export type Color = [number, number, number];
 
 type ColorComponent = 'R' | 'G' | 'B';
 
 type RGBColor = {
   [key in ColorComponent]?: number;
-}
+};
 
-interface IColorPickerProps {
+interface ColorPickerProps {
   color: Color;
   onChange: (color: Color) => void;
 }
 
-interface IColorPickerState {
-  colors: RGBColor
+interface ColorPickerState {
+  colors: RGBColor;
 }
 
-class ColorPicker extends React.Component<IColorPickerProps, IColorPickerState> {
+class ColorPicker extends React.Component<ColorPickerProps, ColorPickerState> {
 
-  private colorComponents: ColorComponent[] = ['R', 'G', 'B']
-
-  state: IColorPickerState = {
+  state: ColorPickerState = {
     colors: {
       R: 0,
       G: 0,
       B: 0
     }
-  }
+  };
 
-  constructor(props: IColorPickerProps) {
+  private colorComponents: ColorComponent[] = ['R', 'G', 'B'];
+
+  constructor(props: ColorPickerProps) {
     super(props);
     if (props.color) {
       this.state.colors = this.arrayToRgb(props.color);
     }
   }
 
-  componentWillReceiveProps(newProps: IColorPickerProps) {
+  componentWillReceiveProps(newProps: ColorPickerProps) {
     if (newProps.color) {
       this.setState({
         colors: this.arrayToRgb(newProps.color)
@@ -46,10 +46,13 @@ class ColorPicker extends React.Component<IColorPickerProps, IColorPickerState> 
   }
 
   arrayToRgb(color: Color): RGBColor {
-    return this.colorComponents.reduce((obj, letter, index) => {
-      obj[letter] = color[index] || 0;
-      return obj;
-    }, {});
+    return this.colorComponents.reduce(
+      (obj, letter, index) => {
+        obj[letter] = color[index] || 0;
+        return obj;
+      },
+      {}
+    );
   }
 
   rgbToArray(rgb: RGBColor): Color {
@@ -65,7 +68,7 @@ class ColorPicker extends React.Component<IColorPickerProps, IColorPickerState> 
     const { value } = event.target;
     const colors = {
       ...this.state.colors,
-      [colorComponent]: parseInt(value)
+      [colorComponent]: parseInt(value, 10)
     };
     if (this.props.onChange) {
       this.props.onChange(this.rgbToArray(colors));
