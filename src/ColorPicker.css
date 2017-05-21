@@ -1,0 +1,31 @@
+.ColorPicker {
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.ColorPicker__preview {
+  width: 100px;
+  background-color: pink;
+  border-left: solid 1px #ABABAB;
+}
+
+.ColorPicker__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 250px;
+  padding: 10px 20px;
+}
+
+.ColorPicker__row__letter {
+  display: inline-block;
+  min-width: 1.5em;
+  font-size: 1.5em;
+  color: #333333;
+}
+.ColorPicker__row__input {
+  flex-grow: 1;
+}

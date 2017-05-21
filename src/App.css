@@ -1,0 +1,17 @@
+.App {
+  background: #ECF1F4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.App__picker {
+  box-shadow: 1px 1px 3px 1px #DDDDDD;
+}
+
+.App__color {
+  font-size: 2em;
+  padding: 1em 0;
+  font-family: monospace;
+}
